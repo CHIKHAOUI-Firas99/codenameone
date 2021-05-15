@@ -93,7 +93,7 @@ public class BaseForm extends Form {
             System.out.println(ex);
         }
 
-        tb.addMaterialCommandToSideMenu("Newsfeed", FontImage.MATERIAL_UPDATE, e -> new NewsfeedForm(res).show());
+        tb.addMaterialCommandToSideMenu("Planning", FontImage.MATERIAL_UPDATE, e -> new ListEntrainements(res).show());
         tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_SETTINGS, e -> {
             try {
                 new ProfileForm(res).show();
@@ -101,6 +101,6 @@ public class BaseForm extends Form {
                 System.out.println(ex);
             }
         });
-        tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> new WalkthruForm(res).show());
+        //tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> new WalkthruForm(res).show());
     }
 }

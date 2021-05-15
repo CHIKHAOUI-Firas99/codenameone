@@ -123,8 +123,8 @@ public class Music extends  BaseForm {
                     arrow.setVisible(true);
                     updateArrowPosition(all, arrow);
                 });
-                bindButtonSelection(all, arrow,res);
-                bindButtonSelection(abbs, arrow,res);
+                bindButtonSelection(all,res);
+                bindButtonSelection(abbs,res);
                 
                 // special case for rotation
                 addOrientationListener(e -> {
@@ -170,9 +170,13 @@ public class Music extends  BaseForm {
                 m4.play();});
                         
                 add(mb1);
+                createLineSeparator();
                 add(mb2);
+                createLineSeparator();
                 add(mb3);
+                createLineSeparator();
                 add(mb4);
+                createLineSeparator();
                 
             } catch (IOException ex) {
                 System.out.println(ex);
@@ -248,13 +252,17 @@ public class Music extends  BaseForm {
       image.addActionListener(e -> new MDEntrainement(res,ent).show());
    }
     
-    private void bindButtonSelection(Button b, Label arrow,Resources res) {
+    private void bindButtonSelection(Button b,Resources res) {
         b.addActionListener(e -> {
             if(b.isSelected()) {
-                updateArrowPosition(b, arrow);
-                new Music(res).show();         
+                new ListEntrainements(res).show();         
                 
             }
         });
+    }
+        public Component createLineSeparator() {
+        Label separator = new Label("", "WhiteSeparator");
+        separator.setShowEvenIfBlank(true);
+        return separator;
     }
 }

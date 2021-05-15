@@ -10,6 +10,7 @@ import com.codename1.components.SpanLabel;
 import com.codename1.components.ToastBar;
 import com.codename1.ui.Button;
 import com.codename1.ui.ButtonGroup;
+import static com.codename1.ui.CN.execute;
 import com.codename1.ui.Component;
 import static com.codename1.ui.Component.BOTTOM;
 import static com.codename1.ui.Component.CENTER;
@@ -132,8 +133,8 @@ public class ListEntrainements extends  BaseForm{
             arrow.setVisible(true);
             updateArrowPosition(all, arrow);
         });
-        bindButtonSelection(all, arrow,res);
-        bindButtonSelection(abbs, arrow,res);
+        bindButtonSelection(all,res);
+        bindButtonSelection(abbs,res);
 
         // special case for rotation
         addOrientationListener(e -> {
@@ -144,24 +145,77 @@ public class ListEntrainements extends  BaseForm{
         for (Entrainement ent : list){
             if (ent.heure == 8){
                Heure = "6.00am - 8.00am";
-               addButton(res.getImage("news-item-1.jpg")," Jour : "+ent.jour+" => Heure : "+Heure,ent,res);
-               
+            addButton(res.getImage("news-item-1.jpg")," Jour : "+ent.jour+" => Heure : "+Heure,ent,res);
+            Label Lmodifier = new Label("");
+            Lmodifier.setUIID("NewsTopLine");
+            Style modifStyle = new Style(Lmodifier.getUnselectedStyle());
+            modifStyle.setFgColor(0xf7ad02);
+            FontImage mFontImage = FontImage.createMaterial(FontImage.MATERIAL_ADD_LINK,modifStyle);
+            Lmodifier.setIcon(mFontImage);
+            Lmodifier.setTextPosition(RIGHT);
+            Lmodifier.addPointerPressedListener(l ->{
+                execute(ent.meet);
+            } ); 
+            add(Lmodifier);
             }
             else if (ent.heure == 12){
                 Heure = "8.00am - 12.00am";
                addButton(res.getImage("news-item-1.jpg")," Jour : "+ent.jour+" => Heure : "+Heure,ent,res);
-                
+            Label Lmodifier = new Label("");
+            Lmodifier.setUIID("NewsTopLine");
+            Style modifStyle = new Style(Lmodifier.getUnselectedStyle());
+            modifStyle.setFgColor(0xf7ad02);
+            FontImage mFontImage = FontImage.createMaterial(FontImage.MATERIAL_ADD_LINK,modifStyle);
+            Lmodifier.setIcon(mFontImage);
+            Lmodifier.setTextPosition(RIGHT);
+            Lmodifier.addPointerPressedListener(l ->{
+                execute(ent.meet);
+            } );    
+            add(Lmodifier);
             }
             else if (ent.heure == 16){
                 Heure = "5.00am - 7.00am"; 
                 addButton(res.getImage("news-item-1.jpg")," Jour : "+ent.jour+" => Heure : "+Heure,ent,res);
+            Label Lmodifier = new Label("");
+            Lmodifier.setUIID("NewsTopLine");
+            Style modifStyle = new Style(Lmodifier.getUnselectedStyle());
+            modifStyle.setFgColor(0xf7ad02);
+            FontImage mFontImage = FontImage.createMaterial(FontImage.MATERIAL_ADD_LINK,modifStyle);
+            Lmodifier.setIcon(mFontImage);
+            Lmodifier.setTextPosition(RIGHT);
+            Lmodifier.addPointerPressedListener(l ->{
+                execute(ent.meet);
+            } );
+            add(Lmodifier);
             }
             else if (ent.heure == 20){
                 Heure = "7.00pm - 9.00pm";
                 addButton(res.getImage("news-item-1.jpg")," Jour : "+ent.jour+" => Heure : "+Heure,ent,res);
+            Label Lmodifier = new Label("");
+            Lmodifier.setUIID("NewsTopLine");
+            Style modifStyle = new Style(Lmodifier.getUnselectedStyle());
+            modifStyle.setFgColor(0xf7ad02);
+            FontImage mFontImage = FontImage.createMaterial(FontImage.MATERIAL_ADD_LINK,modifStyle);
+            Lmodifier.setIcon(mFontImage);
+            Lmodifier.setTextPosition(RIGHT);
+            Lmodifier.addPointerPressedListener(l ->{
+                execute(ent.meet);
+            } );
+            add(Lmodifier);
             }
             else{
             addButton(res.getImage("news-item-1.jpg")," Jour : "+ent.jour+" => Heure : "+Heure,ent,res);
+            Label Lmodifier = new Label("");
+            Lmodifier.setUIID("NewsTopLine");
+            Style modifStyle = new Style(Lmodifier.getUnselectedStyle());
+            modifStyle.setFgColor(0xf7ad02);
+            FontImage mFontImage = FontImage.createMaterial(FontImage.MATERIAL_ADD_LINK,modifStyle);
+            Lmodifier.setIcon(mFontImage);
+            Lmodifier.setTextPosition(RIGHT);
+            Lmodifier.addPointerPressedListener(l ->{
+                execute(ent.meet);
+            } );
+            add(Lmodifier);
             }
          
         }
@@ -235,11 +289,10 @@ public class ListEntrainements extends  BaseForm{
       image.addActionListener(e -> new MDEntrainement(res,ent).show());
    }
     
-    private void bindButtonSelection(Button b, Label arrow,Resources res) {
+    private void bindButtonSelection(Button b,Resources res) {
         b.addActionListener(e -> {
             if(b.isSelected()) {
-                updateArrowPosition(b, arrow);
-                new AjoutEnt(res).show();         
+                new Music(res).show();         
                 
             }
         });
