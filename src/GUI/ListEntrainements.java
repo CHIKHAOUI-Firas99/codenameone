@@ -72,7 +72,6 @@ public class ListEntrainements extends  BaseForm{
         super.addSideMenu(res);
         tb.addSearchCommand(e -> {});
         Tabs swipe = new Tabs();
-
         Label spacer1 = new Label();
         addTab(swipe, res.getImage("breadcrumb-bg.jpg"), spacer1);
         
@@ -177,10 +176,12 @@ public class ListEntrainements extends  BaseForm{
     }
     
     private void addTab(Tabs swipe, Image img, Label spacer) {
+        
         int size = Math.min(Display.getInstance().getDisplayWidth(), Display.getInstance().getDisplayHeight());
         if(img.getHeight() < size) {
             img = img.scaledHeight(size);
         }
+        
        
         ScaleImageLabel image = new ScaleImageLabel(img);
         image.setUIID("Container");

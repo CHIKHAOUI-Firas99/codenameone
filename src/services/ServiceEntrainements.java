@@ -48,9 +48,9 @@ public class ServiceEntrainements {
   
   }
   
-  public void AjoutEntrainnement(String Jour,String Heure,String Titre){
+  public void AjoutEntrainnement(String Jour,String Heure,String Titre,String Meet){
       req = new ConnectionRequest();
-      String url = Statice.BASE_URL+"/entrainement/coach/mobile/1/"+Jour+"/"+Heure+"/"+Titre;
+      String url = Statice.BASE_URL+"/entrainement/coach/mobile/1/"+Jour+"/"+Heure+"/"+Titre+"/"+Meet;
       req.setUrl(url);
       req.addResponseListener((e) ->{ 
           String str = new String(req.getResponseData());    
@@ -252,6 +252,8 @@ public class ServiceEntrainements {
       return coach;
               
      }        
+
+
      
 }        
     

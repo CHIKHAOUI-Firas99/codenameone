@@ -210,3 +210,7 @@
 [0515/000612.974:WARNING:dns_config_service_win.cc(700)] Failed to read DnsConfig.
 [0515/000617.714:WARNING:dns_config_service_win.cc(700)] Failed to read DnsConfig.
 [0515/000617.994:WARNING:dns_config_service_win.cc(700)] Failed to read DnsConfig.
+[0515/015638.472:WARNING:sync_reader.cc(170)] ASR: No room in socket buffer.: The pipe is being closed. (0xE8)
+[0515/015638.472:WARNING:sync_reader.cc(170)] ASR: No room in socket buffer.: The pipe is being closed. (0xE8)
+[0515/015638.480:WARNING:sync_reader.cc(170)] ASR: No room in socket buffer.: The pipe is being closed. (0xE8)
+[0515/015638.480:WARNING:sync_reader.cc(170)] ASR: No room in socket buffer.: The pipe is being closed. (0xE8)

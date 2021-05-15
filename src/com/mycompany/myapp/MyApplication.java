@@ -4,6 +4,7 @@ package com.mycompany.myapp;
 import GUI.AjoutEnt;
 import GUI.ListEntrainements;
 import GUI.Music;
+import GUI.ProfileForm;
 import static com.codename1.ui.CN.*;
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;
@@ -62,16 +63,18 @@ public class MyApplication {
         });        
     }
     
-    public void start() {
+    public void start()  {
 
         if(current != null){
             current.show();
             return;
         }
-        //new ListEntrainements(theme).show();
-        //new AjoutEnt(theme).show();
-        //new SignInForm(theme).show();
-        new Music(theme).show();
+
+            new ListEntrainements(theme).show();
+            //new AjoutEnt(theme).show();
+            //new SignInForm(theme).show();
+            //new Music(theme).show();
+
         
     }
 

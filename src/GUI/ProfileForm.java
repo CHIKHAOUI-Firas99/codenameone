@@ -47,6 +47,7 @@ import com.codename1.ui.util.Resources;
 import entities.Coach;
 import java.io.IOException;
 import com.codename1.io.Util;
+import com.codename1.notifications.LocalNotification;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.TextArea;
@@ -78,9 +79,11 @@ public class ProfileForm extends BaseForm {
         
         
         Image img = res.getImage("breadcrumb-bg.jpg");
+        
         if(img.getHeight() > Display.getInstance().getDisplayHeight() / 3) {
             img = img.scaledHeight(Display.getInstance().getDisplayHeight() / 3);
         }
+        
         ScaleImageLabel sl = new ScaleImageLabel(img);
         sl.setUIID("BottomPad");
         sl.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
@@ -185,7 +188,8 @@ public class ProfileForm extends BaseForm {
                  int height = Display.getInstance().convertToPixels(11.5f);
                  int width = Display.getInstance().convertToPixels(14f);
                 Label imagelab = new Label();
-                imagelab.setIcon(image.fill(width, height));
+                imagelab.setIcon(image.fill(width, height));    
+
                 add(imagelab);
                 super.revalidate();     
         } catch (Exception ex) {

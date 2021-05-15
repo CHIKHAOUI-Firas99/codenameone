@@ -7,6 +7,7 @@ package GUI;
 
 import com.codename1.components.InfiniteProgress;
 import com.codename1.components.MultiButton;
+import com.codename1.notifications.LocalNotification;
 import com.codename1.ui.Button;
 import com.codename1.ui.ComboBox;
 import com.codename1.ui.Component;
@@ -37,7 +38,7 @@ public class AjoutEnt extends BaseForm {
         
         TextField Titre = new TextField("","Titre d'entrainement");
         Titre.setUIID("TextFieldBlack");
-        addStringValue("Jour",Titre);
+        addStringValue("Titre",Titre);
 
           ComboBox combo = new ComboBox(); 
           combo.addItem("6.00am - 8.00am");
@@ -55,6 +56,10 @@ public class AjoutEnt extends BaseForm {
           comboj.addItem("Samedi");
           comboj.addItem("Dimanche");
           add(comboj);
+          
+        TextField Meet = new TextField("","Lien meet");
+        Meet.setUIID("TextFieldBlack");
+        addStringValue("Lien",Meet);      
           
           
         
@@ -74,31 +79,34 @@ public class AjoutEnt extends BaseForm {
                ServiceEntrainements.getInstance().AjoutEntrainnement(
                comboj.getSelectedItem().toString(), 
                "8",
-               Titre.getText().toString());
+               Titre.getText().toString(),
+               Meet.getText().toString());
                }
                else if(combo.getSelectedItem()== "10.00am - 12.00am"){
                ServiceEntrainements.getInstance().AjoutEntrainnement(    
                comboj.getSelectedItem().toString(), 
                "12",
-               Titre.getText().toString());
-                   
+               Titre.getText().toString(),
+               Meet.getText().toString());    
                }
                if(combo.getSelectedItem()== "5.00pm - 7.00pm"){
                ServiceEntrainements.getInstance().AjoutEntrainnement(    
                comboj.getSelectedItem().toString(), 
                "16",
-               Titre.getText().toString());                   
-               
+               Titre.getText().toString(),                   
+               Meet.getText().toString());
                }
                 if(combo.getSelectedItem()== "7.00pm - 9.00pm"){
                ServiceEntrainements.getInstance().AjoutEntrainnement(    
                comboj.getSelectedItem().toString(), 
                "20",
-               Titre.getText().toString());                   
-               }
+               Titre.getText().toString(),                   
+               Meet.getText().toString());
+                }
 
                iDialog.dispose();
                refreshTheme();
+
                new ListEntrainements(res).show(); 
                
                

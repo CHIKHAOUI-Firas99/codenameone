@@ -11,6 +11,7 @@ import com.codename1.io.FileSystemStorage;
 import com.codename1.io.Log;
 import com.codename1.media.Media;
 import com.codename1.media.MediaManager;
+import com.codename1.notifications.LocalNotification;
 import com.codename1.ui.Button;
 import com.codename1.ui.ButtonGroup;
 import com.codename1.ui.Component;
@@ -158,7 +159,8 @@ public class Music extends  BaseForm {
                 m1.pause();    
                 m2.pause();
                 m4.pause();
-                m3.play();});                
+                m3.play();});   
+
 
                 MultiButton mb4 = new MultiButton("Motivation 4");
                 mb4.addActionListener((e) -> {

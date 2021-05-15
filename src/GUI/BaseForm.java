@@ -20,6 +20,7 @@
 package GUI;
 
 import com.codename1.components.ScaleImageLabel;
+import com.codename1.io.FileSystemStorage;
 import com.codename1.ui.Component;
 import com.codename1.ui.Display;
 import com.codename1.ui.FontImage;
@@ -32,7 +33,9 @@ import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.layouts.Layout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
+import entities.Coach;
 import java.io.IOException;
+import services.ServiceEntrainements;
 
 /**
  * Base class for the forms with common functionality
@@ -68,21 +71,28 @@ public class BaseForm extends Form {
     }
 
     protected void addSideMenu(Resources res) {
+        Coach coach = new Coach();
+        coach.setId(1);
         Toolbar tb = getToolbar();
-        Image img = res.getImage("profile-background.jpg");
+        Image img = res.getImage("breadcrumb-bg.jpg");
         if(img.getHeight() > Display.getInstance().getDisplayHeight() / 3) {
             img = img.scaledHeight(Display.getInstance().getDisplayHeight() / 3);
         }
         ScaleImageLabel sl = new ScaleImageLabel(img);
         sl.setUIID("BottomPad");
         sl.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
-        
-        tb.addComponentToSideMenu(LayeredLayout.encloseIn(
+        try {
+            Image m = Image.createImage(FileSystemStorage.getInstance().getAppHomePath()+"/pi/public/uploads/images/"+ServiceEntrainements.getInstance().Profile().image);
+                tb.addComponentToSideMenu(LayeredLayout.encloseIn(
                 sl,
                 FlowLayout.encloseCenterBottom(
-                        new Label(res.getImage("profile-pic.jpg"), "PictureWhiteBackgrond"))
+                        new Label(m, "PictureWhiteBackgrond"))
         ));
         
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+
         tb.addMaterialCommandToSideMenu("Newsfeed", FontImage.MATERIAL_UPDATE, e -> new NewsfeedForm(res).show());
         tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_SETTINGS, e -> {
             try {
